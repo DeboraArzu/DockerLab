@@ -1,0 +1,77 @@
+.header th{
+    width: fit-content;
+    box-shadow: black;
+    border: 2px solid rgba(0, 0, 0, 0.274);
+    padding: 5px;
+    margin: 5px;
+    background: whitesmoke;
+}
+
+.content td{
+    width: fit-content;
+    box-shadow: black;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.466);
+    border-top: 2px solid rgba(0, 0, 0, 0.466);
+    padding: 5px;
+    margin: 5px;
+}
+
+.ButtonDelete{
+    background: red;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.ButtonDelete:hover{
+    background-color: rgb(141, 10, 10); /* Green */
+    color: white;
+}
+
+.ButtonEdit{
+    background: greenyellow;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.ButtonEdit:hover{
+    background-color: rgb(8, 138, 51);
+    color: white;
+}
+
+.ButtonSave:hover{
+    background-color: rgb(8, 138, 51);
+    color: white;
+}
+
+.ButtonSave{
+    background: greenyellow;
+    font-size: 1em;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+}
+
+.ButtonNew{
+    background: cornflowerblue;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 12px;
+    margin-left: 20px;
+}
+
+.ButtonNew:hover{
+    background-color: rgb(17, 67, 175); /* Green */
+    color: white;
+}
+
+form{
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.table{
+    margin-left: 10px;
+    padding-left: 10px;
+}

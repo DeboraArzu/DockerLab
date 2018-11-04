@@ -1,0 +1,10 @@
+body{
+    height: 100%;
+    background: rgb(248, 211, 216);
+}
+
+p{
+    color: black;
+    font-style: italic;
+    font-size: 2rem;
+}

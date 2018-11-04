@@ -1,0 +1,8 @@
+p{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: rgb(141, 62, 6);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+}

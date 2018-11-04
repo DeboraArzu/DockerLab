@@ -1,0 +1,14 @@
+.content{
+    flex-direction: column;
+}
+
+h1,
+h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    color: rgb(102, 88, 6);
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
