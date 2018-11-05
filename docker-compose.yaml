@@ -15,15 +15,20 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-  WebApp: 
-    container_name: WebApp
+  webapp: 
+    container_name: webapp
     build: 
-      context: .
+      context: ./webapp/cloth-site
       dockerfile: Dockerfile
     volumes: 
-      - '.:/usr/src/app'
+      - './usr/src/app'
       - '/usr/src/app/node_modules'
     ports: 
       - '3000:3000'
     environment: 
       - NODE_ENV=development
+  redis:
+    container_name: redis
+    build: 
+      context: .
+      dockerfile: Dockerfile
