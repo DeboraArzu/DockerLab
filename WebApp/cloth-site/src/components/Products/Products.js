@@ -96,7 +96,7 @@ class Products extends Component {
     };
     render() {
         return (
-            <html>
+            <div>
                 <Table className="table">
                     <thead>
                         <tr className="header">
@@ -158,7 +158,7 @@ class Products extends Component {
                         : null
                 }
                 <Button className="ButtonNew" onClick={() => this.NewButtontoggler()}>New</Button>
-            </html>
+            </div>
         )
     }
 }
