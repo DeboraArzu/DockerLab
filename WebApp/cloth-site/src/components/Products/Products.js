@@ -108,11 +108,13 @@ class Products extends Component {
                             <th>Color</th>
                         </tr>
                     </thead>
+                    <ProductList />
                     <tbody className="content">
-                        <ProductList />
                         <tr>
-                            <Button className="ButtonEdit" onClick={this.Edit}>Edit</Button>
-                            <Button className="ButtonDelete" onClick={this.DeleteMethod()}>Delete</Button>
+                            <div>
+                                <Button className="ButtonEdit" onClick={this.Edit}>Edit</Button>
+                                <Button className="ButtonDelete" onClick={this.DeleteMethod()}>Delete</Button>
+                            </div>
                         </tr>
                     </tbody>
                 </Table>
