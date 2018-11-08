@@ -10,3 +10,7 @@ ul {
     line-height: 2rem;
     border-bottom: 1px dotted #777;
   }
+
+  .items-list ul{
+    flex-direction: row
+  }

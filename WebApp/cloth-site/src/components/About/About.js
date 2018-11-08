@@ -8,7 +8,7 @@ class About extends Component {
                 <h1>This page was Made By Debora Arzu</h1>
                 <h2>1098913</h2>
             </div>
-        );
+        )
     }
 }
 export default About;

@@ -15,11 +15,11 @@ exports.getproducts = function (req, res) {
 exports.product_create = function (req, res) {
     let product = new Product(
         {
-            codigo: req.body.codigo,
             name: req.body.name,
-            cost: req.body.cost,
             size: req.body.size,
             color: req.body.color,
+            cost: req.body.cost,
+            status: req.boda.status
         }
     );
 //Save the information to the DB
