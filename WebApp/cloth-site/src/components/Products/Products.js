@@ -101,11 +101,10 @@ class Products extends Component {
                     <thead>
                         <tr className="header">
                             <th>#</th>
-                            <th>Codigo</th>
                             <th>Name</th>
-                            <th>Cost</th>
                             <th>Size</th>
                             <th>Color</th>
+                            <th>Cost</th>
                         </tr>
                     </thead>
                     <ProductList />
