@@ -5,12 +5,14 @@ ul {
     margin:auto;
   }
   
-  li{
+  tr{
     font-size:1.2rem;
     line-height: 2rem;
     border-bottom: 1px dotted #777;
+    flex-direction: row;
+    text-align: center;
   }
 
-  .items-list ul{
-    flex-direction: row
+  .buttons{
+    display: flex;
   }

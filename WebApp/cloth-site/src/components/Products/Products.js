@@ -100,7 +100,6 @@ class Products extends Component {
                 <Table className="table">
                     <thead>
                         <tr className="header">
-                            <th>#</th>
                             <th>Name</th>
                             <th>Size</th>
                             <th>Color</th>

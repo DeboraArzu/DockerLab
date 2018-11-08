@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ProductList.css';
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 class ProductList extends Component {
   constructor(props) {
@@ -23,11 +24,24 @@ class ProductList extends Component {
       return (
         <div className="items-list">
           <ul>
-            {this.state.products['undefined'].map(product => <li key={product.id}>{product.name} {product.size} {product.color} {product.cost} </li>
-            )}
+            {
+              this.state.products['undefined'].map(product =>
+                <tbody>
+                  <tr className="list">
+                    <td>{product.name}</td>
+                    <td>{product.size}</td>
+                    <td>{product.color}</td>
+                    <td>{product.cost}</td>
+                    <td>{product.status}</td>
+                    <div className="buttons">
+                      <Button className="ButtonEdit">Edit</Button>
+                      <Button className="ButtonDelete">Delete</Button>
+                    </div>
+                  </tr>
+                </tbody>
+              )}
           </ul>
-          <Button className="ButtonEdit">Edit</Button>
-          <Button className="ButtonDelete">Delete</Button>
+
         </div>
       )
     }
