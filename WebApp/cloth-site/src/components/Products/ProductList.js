@@ -33,6 +33,7 @@ class ProductList extends Component {
                     <td>{product.color}</td>
                     <td>{product.cost}</td>
                     <td>{product.status}</td>
+                    <td>{product.codigobarra}</td>
                     <div className="buttons">
                       <Button className="ButtonEdit">Edit</Button>
                       <Button className="ButtonDelete">Delete</Button>
