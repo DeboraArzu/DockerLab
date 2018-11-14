@@ -21,7 +21,7 @@ class Products extends Component {
         })
         window.location.reload();
     }
-    
+
     Create = () => {
         let name = this.refs.Name.value
         let size = this.refs.Size.value
@@ -66,7 +66,7 @@ class Products extends Component {
                             <th>Codigo Barra</th>
                         </tr>
                     </thead>
-                    <ProductList />
+                    <ProductList/>
                 </Table>
                 {
                     //show new product form

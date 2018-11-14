@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './ProductList.css';
-import { Button, Table } from 'react-bootstrap';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { Button } from 'react-bootstrap';
 
 class ProductList extends Component {
   constructor(props) {
@@ -11,6 +10,7 @@ class ProductList extends Component {
       products: []
     };
   }
+
   NewButtontoggler() {
     this.setState({
       newForm: !this.setState.newForm
@@ -44,6 +44,7 @@ class ProductList extends Component {
     this.EditMethod(info, codigobarra)
   }
   EditMethod(data, codigobarra) {
+    this.NewButtontoggler()
     fetch('home/:' + codigobarra + '/update', {
       method: "PUT",
       body: JSON.stringify(data),
@@ -55,7 +56,6 @@ class ProductList extends Component {
       .then(products => this.setState({ products }, () => console.log('products edited...', products)));
   }
   DeleteMethod(codigobarra) {
-    debugger
     fetch('/home/:' + codigobarra + '/delete', {
       method: "DELETE",
       headers: {
@@ -67,7 +67,6 @@ class ProductList extends Component {
 
   render() {
     this.products = JSON.stringify(this.state.products)
-    //console.log(this.products)
     if (!(this.products === null) && this.products != '[]' && this.products != '{}') {
       return (
         <div className="items-list">
@@ -99,7 +98,7 @@ class ProductList extends Component {
                     <div className="form-group row">
                       <label for="name-input" className="col-2 col-form-label">Name</label>
                       <div class="col-10">
-                        <input className="form-control" type="text" name="Name" ref="Name"></input>
+                        <input className="form-control" type="text" name="Name" ref="Name" id="Name"></input>
                       </div>
                     </div>
                     <div className="form-group row">
