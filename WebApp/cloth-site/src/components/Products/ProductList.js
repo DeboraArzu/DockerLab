@@ -7,8 +7,14 @@ class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      newForm: false,
       products: []
     };
+  }
+  NewButtontoggler() {
+    this.setState({
+      newForm: !this.setState.newForm
+    })
   }
 
   componentDidMount() {
@@ -31,11 +37,10 @@ class ProductList extends Component {
       codigobarra: codigobarra
     };
     console.log(JSON.stringify(info))
-    this.refs.NewProductForm.reset()
     this.EditMethod(info, codigobarra)
   }
-  EditMethod(data, id) {
-    fetch('home/' + id + '/update', {
+  EditMethod(data, codigobarra) {
+    fetch('home/' + codigobarra + '/update', {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -45,31 +50,32 @@ class ProductList extends Component {
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products edited...', products)));
   }
-  DeleteMethod = () => {
-    let urlm = '/home';
-    let id = '5bc62973c62e94253c903ac0';
-    fetch(urlm + '/' + id + '/delete', {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(products => this.setState({ products }, () => console.log('products deleted...', products)))
-
+  DeleteMethod(codigobarra, mycase) {
+    if (mycase === 1) {
+      /*
+      fetch('/home/' + codigobarra + '/delete', {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(products => this.setState({ products }, () => console.log('products deleted...', products)))*/
+    }
   }
 
   render() {
     this.products = JSON.stringify(this.state.products)
     console.log(this.products)
-    if (!(this.products === null) && this.products != '[]') {
+    if (!(this.products === null) && this.products != '[]' && this.products != '{}') {
+      //debugger
       return (
         <div className="items-list">
           <ul>
             {
               this.state.products['undefined'].map(product =>
                 <tbody>
-                  <tr className="list" id= {'p'+product.codigobarra}  >
+                  <tr className="list" id={'p' + product.codigobarra}  >
                     <td>{product.name}</td>
                     <td>{product.size}</td>
                     <td>{product.color}</td>
@@ -77,16 +83,64 @@ class ProductList extends Component {
                     <td>{product.status}</td>
                     <td>{product.codigobarra}</td>
                     <div className="buttons">
-                      <Button className="ButtonEdit">Edit</Button>
-                      <Button className="ButtonDelete">Delete</Button>
+                      <Button className="ButtonEdit" onClick={this.Edit(product)}>Edit</Button>
+                      <Button className="ButtonDelete" onClick={this.DeleteMethod(product.codigobarra, 1)}>Delete</Button>
                     </div>
                   </tr>
                 </tbody>
               )}
           </ul>
-
+          <div id="FormEdit">
+            {
+              //show new product form
+              this.state.newForm ?
+                <form ref="NewProductForm" method="POST" action="/home/create">
+                  <div className="NewComponent">
+                    <div className="form-group row">
+                      <label for="name-input" className="col-2 col-form-label">Name</label>
+                      <div class="col-10">
+                        <input className="form-control" type="text" name="Name" ref="Name"></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label for="size-input" className="col-2 col-form-label">Size</label>
+                      <div class="col-10">
+                        <input className="form-control" type="text" name="Size" ref="Size"></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label for="color-input" className="col-2 col-form-label">Color</label>
+                      <div class="col-10">
+                        <input className="form-control" type="text" name="Color" ref="Color"></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label for="cost-input" className="col-2 col-form-label">Cost</label>
+                      <div class="col-10">
+                        <input className="form-control" type="Number" name="Size" ref="Cost"></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label for="status-input" className="col-2 col-form-label">Status</label>
+                      <div class="col-10">
+                        <input className="form-control" type="Number" name="Status" ref="Status"></input>
+                      </div>
+                    </div>
+                    <div className="form-group row">
+                      <label for="status-input" className="col-2 col-form-label">Codigo Barra</label>
+                      <div class="col-10">
+                        <input className="form-control" type="Number" name="codigobarra" ref="Codigobarra"></input>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                : null
+            }
+          </div>
         </div>
+
       )
+    } else {
     }
     return ""
   }

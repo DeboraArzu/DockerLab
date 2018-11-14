@@ -21,23 +21,21 @@ class Products extends Component {
         })
 
     }
-    Create = (event) => {
-        event.preventDefault();
-        let codigo = this.refs.Codigo.value
+    Create = () => {
         let name = this.refs.Name.value
-        let cost = this.refs.Cost.value
         let size = this.refs.Size.value
         let color = this.refs.Color.value
+        let cost = this.refs.Cost.value
+        let codigobarra = this.refs.Codigobarra.value
 
         let info = {
-            codigo: codigo,
             name: name,
-            cost: cost,
             size: size,
-            color: color
+            color: color,
+            cost: cost,
+            codigobarra: codigobarra
         };
-        console.log(JSON.stringify(info))
-        this.refs.NewProductForm.reset()
+        //this.refs.NewProductForm.reset()
         this.PostData(info);
     };
 
@@ -64,6 +62,7 @@ class Products extends Component {
                             <th>Color</th>
                             <th>Cost</th>
                             <th>Status</th>
+                            <th>Codigo Barra</th>
                         </tr>
                     </thead>
                     <ProductList />
@@ -76,7 +75,7 @@ class Products extends Component {
                                 <div className="form-group row">
                                     <label for="name-input" className="col-2 col-form-label">Name</label>
                                     <div class="col-10">
-                                        <input className="form-control" type="text" name="Name" ref="Name"></input>
+                                        <input  className="form-control" type="text" name="Name" ref="Name"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
@@ -94,22 +93,29 @@ class Products extends Component {
                                 <div className="form-group row">
                                     <label for="cost-input" className="col-2 col-form-label">Cost</label>
                                     <div class="col-10">
-                                        <input className="form-control" type="text" name="Size" ref="Cost"></input>
+                                        <input className="form-control" type="Number" name="Size" ref="Cost"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
                                     <label for="status-input" className="col-2 col-form-label">Status</label>
                                     <div class="col-10">
-                                        <input className="form-control" type="text" name="Status" ref="Status"></input>
+                                        <input className="form-control" type="Number" name="Status" ref="Status"></input>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label for="status-input" className="col-2 col-form-label">Codigo Barra</label>
+                                    <div class="col-10">
+                                        <input className="form-control" type="Number" name="codigobarra" ref="Codigobarra"></input>
                                     </div>
                                 </div>
                             </div>
-                            <Button className="ButtonEdit" onClick={this.create()}>Save</Button>
+                            <Button className="ButtonEdit" onClick={() => this.Create()}>Save</Button>
                             <Button className="ButtonDelete" onClick={() => this.Hide()}>Cancel</Button>
                         </form>
                         : null
                 }
                 <Button className="ButtonNew" onClick={() => this.NewButtontoggler()}>New</Button>
+                
             </div>
         )
     }

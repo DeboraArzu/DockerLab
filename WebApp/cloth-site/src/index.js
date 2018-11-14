@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 ReactDOM.render(
     <BrowserRouter>
         <div>
-            <Redirect from="/" to="home" />
+             <Redirect from="/" to="home" /> 
             <Route component={App} />
             <Route path={"/home"} component={Home} />
         </div>
