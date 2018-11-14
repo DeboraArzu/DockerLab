@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import './Products.css';
-import ProductList from './ProductList'
+import ProductList from './ProductList';
+import ProductFunctions from './ProductFunctions';
 
 class Products extends Component {
-    //estado de la forma para NewComponent
     state = {
         newForm: false,
     }
@@ -38,7 +38,7 @@ class Products extends Component {
         };
         console.log(JSON.stringify(info))
         this.refs.NewProductForm.reset()
-        //this.PostData(info);
+        this.PostData(info);
     };
 
     PostData(data) {
@@ -145,7 +145,7 @@ class Products extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <Button className="ButtonEdit" onClick={this.Create}>Save</Button>
+                            <Button className="ButtonEdit" onClick={this.create()}>Save</Button>
                             <Button className="ButtonDelete" onClick={() => this.Hide()}>Cancel</Button>
                         </form>
                         : null

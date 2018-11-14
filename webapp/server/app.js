@@ -1,7 +1,7 @@
 // app.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const product = require('./ProductApp/routes/product.route'); // Imports routes for the products
+const product = require('./routes/product.route'); // Imports routes for the products
 const app = express();
 //redis cache
 const redis = require('redis');
