@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 ReactDOM.render(
     <BrowserRouter>
         <div>
-             <Redirect from="/" to="home" /> 
+            <Redirect from="/" to="home" />
             <Route component={App} />
             <Route path={"/home"} component={Home} />
         </div>
@@ -28,5 +28,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
-    
+
 

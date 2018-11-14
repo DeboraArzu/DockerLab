@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import './Products.css';
 import ProductList from './ProductList';
-import ProductFunctions from './ProductFunctions';
+//import ProductFunctions from './ProductFunctions';
 
 class Products extends Component {
     state = {

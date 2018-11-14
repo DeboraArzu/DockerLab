@@ -40,7 +40,7 @@ class ProductList extends Component {
     this.EditMethod(info, codigobarra)
   }
   EditMethod(data, codigobarra) {
-    fetch('home/' + codigobarra + '/update', {
+    fetch('home/:' + codigobarra + '/update', {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -50,18 +50,16 @@ class ProductList extends Component {
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products edited...', products)));
   }
-  DeleteMethod(codigobarra, mycase) {
-    if (mycase === 1) {
-      /*
-      fetch('/home/' + codigobarra + '/delete', {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(res => res.json())
-        .then(products => this.setState({ products }, () => console.log('products deleted...', products)))*/
-    }
+  DeleteMethod(codigobarra) {
+    debugger
+    fetch('/home/:' + codigobarra + '/delete', {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(products => this.setState({ products }, () => console.log('products deleted...', products)))
   }
 
   render() {
@@ -83,8 +81,8 @@ class ProductList extends Component {
                     <td>{product.status}</td>
                     <td>{product.codigobarra}</td>
                     <div className="buttons">
-                      <Button className="ButtonEdit" onClick={this.Edit(product)}>Edit</Button>
-                      <Button className="ButtonDelete" onClick={this.DeleteMethod(product.codigobarra, 1)}>Delete</Button>
+                      <Button className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
+                      <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
                     </div>
                   </tr>
                 </tbody>
