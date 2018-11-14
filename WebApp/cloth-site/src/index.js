@@ -13,9 +13,10 @@ import { Provider } from 'react-redux';
 ReactDOM.render(
     <BrowserRouter>
         <div>
-            <Redirect from="/" to="home" />
+            {/* <Redirect from="/" to="home" /> */}
             <Route component={App} />
             <Route path={"/home"} component={Home} />
+            <Route path={"/"} component={Home} />
         </div>
         <div className="products"><Route path={"/Products"} component={Products} /></div>
         <div className="about"><Route path={"/About"} component={About} /></div>

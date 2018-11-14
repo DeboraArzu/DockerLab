@@ -58,15 +58,13 @@ class ProductList extends Component {
         "Content-Type": "application/json"
       }
     })
-      .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products deleted...', products)))
   }
 
   render() {
     this.products = JSON.stringify(this.state.products)
-    console.log(this.products)
+    //console.log(this.products)
     if (!(this.products === null) && this.products != '[]' && this.products != '{}') {
-      //debugger
       return (
         <div className="items-list">
           <ul>
