@@ -19,8 +19,9 @@ class Products extends Component {
         this.setState({
             newForm: false
         })
-
+        window.location.reload();
     }
+    
     Create = () => {
         let name = this.refs.Name.value
         let size = this.refs.Size.value
@@ -35,7 +36,8 @@ class Products extends Component {
             cost: cost,
             codigobarra: codigobarra
         };
-        //this.refs.NewProductForm.reset()
+        this.refs.NewProductForm.reset()
+        this.Hide();
         this.PostData(info);
     };
 
@@ -47,10 +49,9 @@ class Products extends Component {
                 "Content-Type": "application/json"
             }
         })
-            .then(res => res.json())
             .then(products => this.setState({ products }, () => console.log('products posted...', products)))
     }
-    
+
     render() {
         return (
             <div>
@@ -75,7 +76,7 @@ class Products extends Component {
                                 <div className="form-group row">
                                     <label for="name-input" className="col-2 col-form-label">Name</label>
                                     <div class="col-10">
-                                        <input  className="form-control" type="text" name="Name" ref="Name"></input>
+                                        <input className="form-control" type="text" name="Name" ref="Name"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
@@ -115,7 +116,7 @@ class Products extends Component {
                         : null
                 }
                 <Button className="ButtonNew" onClick={() => this.NewButtontoggler()}>New</Button>
-                
+
             </div>
         )
     }

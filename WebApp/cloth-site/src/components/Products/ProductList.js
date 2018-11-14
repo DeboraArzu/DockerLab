@@ -22,6 +22,10 @@ class ProductList extends Component {
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
   }
+
+  Reload() {
+    window.location.reload();
+  }
   Edit = (product) => {
     let name = product.name
     let cost = product.cost
