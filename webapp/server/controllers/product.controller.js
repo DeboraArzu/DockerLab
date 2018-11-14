@@ -25,7 +25,7 @@ exports.product_create = function (req, res) {
             color: req.body.color,
             cost: req.body.cost,
             status: req.body.status,
-            codigobarra: req.body.status
+            codigobarra: req.body.codigobarra
         }
     );
     //Save the information to the DB
