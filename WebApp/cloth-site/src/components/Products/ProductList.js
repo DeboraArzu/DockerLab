@@ -16,23 +16,23 @@ class ProductList extends Component {
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
   }
-  Edit = () => {
-    let codigo = this.refs.Codigo.value
-    let name = this.refs.Name.value
-    let cost = this.refs.Cost.value
-    let size = this.refs.Size.value
-    let color = this.refs.Color.value
+  Edit = (product) => {
+    let name = product.name
+    let cost = product.cost
+    let size = product.size
+    let color = product.color
+    let codigobarra = product.codigobarra
 
     let info = {
-      codigo: codigo,
       name: name,
-      cost: cost,
       size: size,
-      color: color
+      color: color,
+      cost: cost,
+      codigobarra: codigobarra
     };
     console.log(JSON.stringify(info))
     this.refs.NewProductForm.reset()
-    this.EditMethod(info, codigo)
+    this.EditMethod(info, codigobarra)
   }
   EditMethod(data, id) {
     fetch('home/' + id + '/update', {
@@ -69,7 +69,7 @@ class ProductList extends Component {
             {
               this.state.products['undefined'].map(product =>
                 <tbody>
-                  <tr className="list">
+                  <tr className="list" id= {'p'+product.codigobarra}  >
                     <td>{product.name}</td>
                     <td>{product.size}</td>
                     <td>{product.color}</td>
