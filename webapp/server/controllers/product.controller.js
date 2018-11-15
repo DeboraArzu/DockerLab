@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const Product = require('../models/product.model');
 const redis = require('redis');
-const REDIS_URL = process.env.REDIS_URL;
-const client = redis.createClient(REDIS_URL);
+const client = redis.createClient();
 
 //Simple version, without validation or sanitation
 exports.getproducts = function (req, res) {
@@ -34,7 +33,7 @@ exports.product_create = function (req, res) {
             return next(err);
         }
         res.send('Product Created successfully')
-        insert(req.body.name, product)
+        insert(req.body.codigobarra, product)
     })
 
 };
@@ -65,13 +64,13 @@ exports.product_delete = function (req, res) {
     })
 };
 
-function insert(name, product) {
-    client.hmset(name, [
+function insert(codigo, product) {
+    client.hmset(codigo, [
         'name', product.name,
         'size', product.size,
         'color', product.color,
         'cost', product.cost,
-        'status', product.status
+        'status', product.status,
     ], function (err, reply) {
         if (err) {
             console.log(err)

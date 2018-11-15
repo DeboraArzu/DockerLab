@@ -15,6 +15,7 @@ class ProductList extends Component {
     this.setState({
       newForm: !this.setState.newForm
     })
+    debugger  
   }
 
   componentDidMount() {
@@ -43,6 +44,7 @@ class ProductList extends Component {
     console.log(JSON.stringify(info))
     this.EditMethod(info, codigobarra)
   }
+
   EditMethod(data, codigobarra) {
     this.NewButtontoggler()
     fetch('home/:' + codigobarra + '/update', {
@@ -137,7 +139,6 @@ class ProductList extends Component {
             }
           </div>
         </div>
-
       )
     } else {
     }
