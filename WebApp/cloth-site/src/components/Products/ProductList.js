@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ProductList.css';
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 
 class ProductList extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class ProductList extends Component {
     this.setState({
       newForm: !this.setState.newForm
     })
-    debugger  
+    debugger
   }
 
   componentDidMount() {
@@ -75,20 +75,25 @@ class ProductList extends Component {
           <ul>
             {
               this.state.products['undefined'].map(product =>
-                <tbody>
-                  <tr className="list" id={'p' + product.codigobarra}  >
-                    <td>{product.name}</td>
-                    <td>{product.size}</td>
-                    <td>{product.color}</td>
-                    <td>{product.cost}</td>
-                    <td>{product.status}</td>
-                    <td>{product.codigobarra}</td>
-                    <div className="buttons">
-                      <Button className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
-                      <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
-                    </div>
-                  </tr>
-                </tbody>
+                // <div style={{ display: "flex", textAlign: "center" }}>
+                <div className="items">
+                  <Table striped bordered condensed hover>
+                    <tbody>
+                      <tr id={'p' + product.codigobarra}>
+                        <td>{product.name}</td>
+                        <td>{product.size}</td>
+                        <td>{product.color}</td>
+                        <td>{product.cost}</td>
+                        <td>{product.status}</td>
+                        <td>{product.codigobarra}</td>
+                        <div style={{ display: "flex" }}>
+                          <Button style={{ marginLeft: "5rem" }} className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
+                          <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
+                        </div>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
               )}
           </ul>
           <div id="FormEdit">
@@ -145,5 +150,4 @@ class ProductList extends Component {
     return ""
   }
 }
-
 export default ProductList;

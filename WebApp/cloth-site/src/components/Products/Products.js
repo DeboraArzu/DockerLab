@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import './Products.css';
 import ProductList from './ProductList';
-//import ProductFunctions from './ProductFunctions';
 
 class Products extends Component {
     state = {
         newForm: false,
+        buttonnew: true
     }
     //show new product form
     NewButtontoggler() {
         this.setState({
-            newForm: !this.setState.newForm
+            newForm: !this.setState.newForm,
+            buttonnew: false
         })
     }
     //hide new product form
@@ -54,24 +55,26 @@ class Products extends Component {
 
     render() {
         return (
-            <div>
-                <Table className="table">
+            <div id="ProductMain">
+                <Table striped bordered condensed hover className="table">
                     <thead>
                         <tr className="header">
-                            <th>Name</th>
-                            <th>Size</th>
-                            <th>Color</th>
+                            <th >Name</th>
+                            <th >Size</th>
+                            <th >Color</th>
                             <th>Cost</th>
                             <th>Status</th>
                             <th>Codigo Barra</th>
                         </tr>
                     </thead>
-                    <ProductList/>
+                    <tbody>
+                        <ProductList />
+                    </tbody>
                 </Table>
                 {
                     //show new product form
                     this.state.newForm ?
-                        <form ref="NewProductForm" method="POST" action="/home/create">
+                        <form ref="NewProductForm" method="POST" action="/home/create" style={{ marginTop: "50px" }}>
                             <div className="NewComponent">
                                 <div className="form-group row">
                                     <label for="name-input" className="col-2 col-form-label">Name</label>
@@ -115,8 +118,11 @@ class Products extends Component {
                         </form>
                         : null
                 }
-                <Button className="ButtonNew" onClick={() => this.NewButtontoggler()}>New</Button>
-
+                {
+                    this.state.buttonnew ?
+                        <Button style={{ marginTop: "50px" }} className="ButtonNew" ref="ButtonNew" onClick={() => this.NewButtontoggler()}>New</Button>
+                        : null
+                }
             </div>
         )
     }
