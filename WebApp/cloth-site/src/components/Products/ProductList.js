@@ -71,31 +71,40 @@ class ProductList extends Component {
     this.products = JSON.stringify(this.state.products)
     if (!(this.products === null) && this.products != '[]' && this.products != '{}') {
       return (
+
         <div className="items-list">
-          <ul>
-            {
-              this.state.products['undefined'].map(product =>
-                // <div style={{ display: "flex", textAlign: "center" }}>
-                <div className="items">
-                  <Table striped bordered condensed hover>
-                    <tbody>
-                      <tr id={'p' + product.codigobarra}>
-                        <td>{product.name}</td>
-                        <td>{product.size}</td>
-                        <td>{product.color}</td>
-                        <td>{product.cost}</td>
-                        <td>{product.status}</td>
-                        <td>{product.codigobarra}</td>
-                        <div style={{ display: "flex" }}>
-                          <Button style={{ marginLeft: "5rem" }} className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
-                          <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
-                        </div>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
-              )}
-          </ul>
+          <Table striped bordered condensed hover>
+            <thead>
+              <tr className="header">
+                <th >Name</th>
+                <th >Size</th>
+                <th >Color</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Codigo Barra</th>
+              </tr>
+            </thead>
+            <ul>
+              {
+                this.state.products['undefined'].map(product =>
+                  // <div style={{ display: "flex", textAlign: "center" }}>
+                  <tbody>
+                    <tr id={'p' + product.codigobarra}>
+                      <td>{product.name}</td>
+                      <td>{product.size}</td>
+                      <td>{product.color}</td>
+                      <td>{product.cost}</td>
+                      <td>{product.status}</td>
+                      <td>{product.codigobarra}</td>
+                      <div style={{ display: "flex" }}>
+                        <Button style={{ marginLeft: "5rem" }} className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
+                        <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
+                      </div>
+                    </tr>
+                  </tbody>
+                )}
+            </ul>
+          </Table>
           <div id="FormEdit">
             {
               //show new product form
@@ -143,7 +152,7 @@ class ProductList extends Component {
                 : null
             }
           </div>
-        </div>
+        </div >
       )
     } else {
     }

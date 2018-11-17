@@ -56,21 +56,7 @@ class Products extends Component {
     render() {
         return (
             <div id="ProductMain">
-                <Table striped bordered condensed hover className="table">
-                    <thead>
-                        <tr className="header">
-                            <th >Name</th>
-                            <th >Size</th>
-                            <th >Color</th>
-                            <th>Cost</th>
-                            <th>Status</th>
-                            <th>Codigo Barra</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <ProductList />
-                    </tbody>
-                </Table>
+                <ProductList />
                 {
                     //show new product form
                     this.state.newForm ?
