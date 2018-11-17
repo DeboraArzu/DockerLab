@@ -11,7 +11,7 @@ exports.getproducts = function (req, res) {
         products.forEach(function (product) {
             productMap[product.codigo] = products;
         });
-        res.send(productMap);
+        res.status(200).send(productMap);
     });
 };
 
@@ -32,7 +32,7 @@ exports.product_create = function (req, res) {
         if (err) {
             return next(err);
         }
-        res.send('Product Created successfully')
+        res.status(200).send('Product Created successfully')
         insert(req.body.codigobarra, product)
     })
 
@@ -42,7 +42,7 @@ exports.product_create = function (req, res) {
 exports.product_details = function (req, res) {
     Product.find({ name: req.params.name }, function (err, product) {
         if (err) return next(err);
-        res.send(product);
+        res.status(200).send(product);
         console.log(product)
     })
     GetKeys()
@@ -52,15 +52,15 @@ exports.product_details = function (req, res) {
 exports.product_update = function (req, res) {
    Product.findOneAndUpdate(req.params.codigobarra, { $set: req.body }, function (err, product) {
         if (err) return next(err);
-        res.send('Product udpated.');
+        res.status(200).send('Product udpated.');
     }); 
 };
 
 //DELETE
 exports.product_delete = function (req, res) {
-    Product.findByIdAndRemove(req.params.codigobarra, function (err) {
+    Product.findOneAndRemove(req.params.codigobarra, function (err) {
         if (err) return next(err);
-        res.send('Deleted successfully!');
+        res.status(200).send('Deleted successfully!');
         deletedata(req.params.codigobarra)
     })
 };
