@@ -71,20 +71,19 @@ class ProductList extends Component {
     this.products = JSON.stringify(this.state.products)
     if (!(this.products === null) && this.products != '[]' && this.products != '{}') {
       return (
-
         <div className="items-list">
-          <Table striped bordered condensed hover>
-            <thead>
-              <tr className="header">
-                <th >Name</th>
-                <th >Size</th>
-                <th >Color</th>
-                <th>Cost</th>
-                <th>Status</th>
-                <th>Codigo Barra</th>
-              </tr>
-            </thead>
-            <ul>
+          <ul>
+            <Table striped bordered condensed hover>
+              <thead>
+                <tr className="header">
+                  <th >Name</th>
+                  <th >Size</th>
+                  <th >Color</th>
+                  <th>Cost</th>
+                  <th>Status</th>
+                  <th>Codigo Barra</th>
+                </tr>
+              </thead>
               {
                 this.state.products['undefined'].map(product =>
                   // <div style={{ display: "flex", textAlign: "center" }}>
@@ -103,8 +102,8 @@ class ProductList extends Component {
                     </tr>
                   </tbody>
                 )}
-            </ul>
-          </Table>
+            </Table>
+          </ul>
           <div id="FormEdit">
             {
               //show new product form
