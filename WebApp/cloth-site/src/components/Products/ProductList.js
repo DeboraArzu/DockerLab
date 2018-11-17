@@ -96,7 +96,7 @@ class ProductList extends Component {
                       <td>{product.status}</td>
                       <td>{product.codigobarra}</td>
                       <div style={{ display: "flex" }}>
-                        <Button style={{ marginLeft: "5rem" }} className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
+                        <Button style={{ marginRight: "2rem" }} className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
                         <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
                       </div>
                     </tr>
