@@ -14,18 +14,12 @@ class Home extends Component {
                 <Carousel >
                     <Carousel.Item>
                         <img style={{margin:"auto"}} width={900} height={500} alt="900x500" src={shopping} />
-                        <Carousel.Caption>
-                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img style={{margin:"auto"}} width={900} height={500} alt="900x500" src={bag} />
-                        <Carousel.Caption>
-                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img style={{margin:"auto"}} width={900} height={500} alt="900x500" src={shoppingapp} />
-                        <Carousel.Caption>
-                        </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>;
                 </div>

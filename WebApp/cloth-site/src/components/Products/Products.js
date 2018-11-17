@@ -22,7 +22,6 @@ class Products extends Component {
         })
         window.location.reload();
     }
-
     Create = () => {
         let name = this.refs.Name.value
         let size = this.refs.Size.value

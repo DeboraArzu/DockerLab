@@ -58,7 +58,7 @@ exports.product_update = function (req, res) {
 
 //DELETE
 exports.product_delete = function (req, res) {
-    Product.findOneAndDelete(req.params.codigobarra, function (err) {
+    Product.findByIdAndRemove(req.params.codigobarra, function (err) {
         if (err) return next(err);
         res.send('Deleted successfully!');
         deletedata(req.params.codigobarra)

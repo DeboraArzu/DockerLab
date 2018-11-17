@@ -7,15 +7,25 @@ class ProductList extends Component {
     super(props);
     this.state = {
       newForm: false,
-      products: []
+      products: [],
+      buttonnew: true
     };
   }
 
   NewButtontoggler() {
     this.setState({
-      newForm: !this.setState.newForm
+      newForm: !this.setState.newForm,
+      buttonnew: false
     })
     debugger
+  }
+
+  //hide new product form
+  Hide() {
+    this.setState({
+      newForm: false
+    })
+    window.location.reload();
   }
 
   componentDidMount() {
@@ -147,6 +157,8 @@ class ProductList extends Component {
                       </div>
                     </div>
                   </div>
+                  <Button className="ButtonEdit" onClick={() => this.Create()}>Save</Button>
+                  <Button className="ButtonDelete" onClick={() => this.Hide()}>Cancel</Button>
                 </form>
                 : null
             }
