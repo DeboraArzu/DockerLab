@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Products.css';
 import ProductList from './ProductList';
 

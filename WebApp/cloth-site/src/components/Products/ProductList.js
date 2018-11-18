@@ -7,17 +7,18 @@ class ProductList extends Component {
     super(props);
     this.state = {
       newForm: false,
-      products: [],
-      buttonnew: true
+      products: {},
+      buttonnew: true,
+      codigo: 0
     };
   }
 
   NewButtontoggler() {
     this.setState({
       newForm: !this.setState.newForm,
-      buttonnew: false
+      buttonnew: false,
+      codigo: ''
     })
-    debugger
   }
 
   //hide new product form
@@ -32,6 +33,14 @@ class ProductList extends Component {
     fetch('/home/products')
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
+  }
+
+  componentDidUpdate() {
+    let form = this.state.newForm
+    if (form === 'true') {
+      
+    }
+    debugger
   }
 
   Reload() {
@@ -67,6 +76,7 @@ class ProductList extends Component {
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products edited...', products)));
   }
+
   DeleteMethod(codigobarra) {
     fetch('/home/:' + codigobarra + '/delete', {
       method: "DELETE",
@@ -79,7 +89,7 @@ class ProductList extends Component {
 
   render() {
     this.products = JSON.stringify(this.state.products)
-    if (!(this.products === null) && this.products != '[]' && this.products != '{}') {
+    if (!(this.products === null) && this.products !== '[]' && this.products !== '{}') {
       return (
         <div className="items-list">
           <ul>
