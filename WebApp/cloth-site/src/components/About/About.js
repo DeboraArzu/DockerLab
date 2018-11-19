@@ -18,9 +18,12 @@ class About extends Component {
                 </Grid>
                 <div className="content" >
                     <Well className="Well">
-                        <h1>This page was Made By Debora Arzu</h1>
+                        <h1>This page was Made By Débora Arzú</h1>
                         <h2>Carné 1098913</h2>
                     </Well>
+                    <h3>FrontEnd: React</h3>
+                    <h3>BackEnd: NodeJs, MongoDB and Redis</h3>
+                    <h3>Styling: React Bootstrap</h3>
                 </div>
             </div>
         )
