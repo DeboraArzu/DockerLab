@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const Product = require('../models/product.model');
 const redis = require('redis');
-const client = redis.createClient();
+//const client = redis.createClient();
 
 //Simple version, without validation or sanitation
 exports.getproducts = function (req, res, next) {
@@ -28,7 +28,7 @@ exports.product_create = function (req, res, next) {
             codigobarra: req.body.codigobarra
         }
     );
-    insert(req.params.codigobarra, product)
+   // insert(req.params.codigobarra, product)
     //Save the information to the DB
     product.save(function (err) {
         if (err) {
@@ -46,7 +46,7 @@ exports.product_details = function (req, res) {
         res.status(200).send(product);
         console.log(product)
     })
-    GetKeys()
+  //  GetKeys()
 };
 
 //HTTP PUT
@@ -62,7 +62,7 @@ exports.product_delete = function (req, res, next) {
     Product.findOneAndDelete(req.params.codigobarra, function (err) {
         if (err) return next(err);
         res.status(200).send('Deleted successfully!');
-        deletedata(req.params.codigobarra)
+       // deletedata(req.params.codigobarra)
     }).catch(next);
 };
 
