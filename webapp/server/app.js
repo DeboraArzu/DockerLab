@@ -45,11 +45,11 @@ app.listen(port, () => {
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-client.on('connect', () => {
-    console.log(`connected to redis`);
-});
-client.on('error', function (err) {
-    console.log('error')
-}) 
+// client.on('connect', () => {
+//     console.log(`connected to redis`);
+// });
+// client.on('error', function (err) {
+//     console.log('error')
+// }) 
 
 module.exports = app;
