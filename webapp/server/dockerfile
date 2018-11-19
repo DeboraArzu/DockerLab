@@ -15,7 +15,7 @@ RUN npm install redis
 RUN npm install express-redis-cache
 RUN npm install express-handlebars
 RUN npm install method-override
-RUN npm mongoose
+RUN npm install mongoose
 RUN npm install cors
 RUN npm install body-parser
 # If you are building your code for production
