@@ -11,7 +11,7 @@ class About extends Component {
                     <Row className="show-grid">
                         <Col xs={6} md={4}>
                             <div className="content">
-                                <img height={110} width={80} src={Logo}></img>
+                                <img height={110} width={80} src={Logo} alt="110x80"></img>
                             </div>
                         </Col>
                     </Row>

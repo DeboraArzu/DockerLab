@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './ProductList.css';
 import { Button, Table } from 'react-bootstrap';
-import BootstrapTable from 'react-bootstrap-table-next';
 
 class ProductList extends Component {
   constructor(props) {
