@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './About.css'
 import { Well, Grid, Row, Col } from 'react-bootstrap'
-import Logo from '../img/logo.jpg'
+//import Logo from '../img/logo.jpg'
 
 class About extends Component {
     render() {
@@ -11,7 +11,7 @@ class About extends Component {
                     <Row className="show-grid">
                         <Col xs={6} md={4}>
                             <div className="content">
-                                <img height={110} width={80} src={Logo} alt="110x80"></img>
+                                {/* <img height={110} width={80} src={Logo} alt="110x80"></img> */}
                             </div>
                         </Col>
                     </Row>
