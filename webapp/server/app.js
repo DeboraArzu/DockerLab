@@ -4,18 +4,19 @@ const bodyParser = require('body-parser');
 const product = require('./routes/product.route'); // Imports routes for the products
 const app = express();
 //redis cache
-const redis = require('redis');
+//const redis = require('redis');
 const methodoverride = require('method-override');
 const exphbs = require('express-handlebars');
-var cache = require('express-redis-cache')({
-    port: 6379,
-    host: 'localhost',
-    authPass: null,
-    prefix: 'home',
-    enabled: true
-});
+
+// var cache = require('express-redis-cache')({
+//     port: 6379,
+//     host: 'localhost',
+//     authPass: null,
+//     prefix: 'home',
+//     enabled: true
+// });
 // connect to Redis
-const client = redis.createClient();
+//const client = redis.createClient();
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -30,7 +31,7 @@ let port = 4000;
 
 //view engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('cache', cache)
+//app.set('cache', cache)
 //body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
