@@ -30,17 +30,15 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('/home/products')
-      .then(res => res.json())
+    fetch('http://localhost:4000/home/products')
       .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
   }
 
   componentDidUpdate() {
     let form = this.state.newForm
     if (form === 'true') {
-      
+
     }
-    debugger
   }
 
   Reload() {
@@ -75,6 +73,8 @@ class ProductList extends Component {
     })
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products edited...', products)));
+
+
   }
 
   DeleteMethod(codigobarra) {

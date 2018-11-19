@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './Products.css';
 import ProductList from './ProductList';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 class Products extends Component {
     state = {
@@ -55,7 +56,9 @@ class Products extends Component {
     render() {
         return (
             <div id="ProductMain">
-                <ProductList />
+                <ErrorBoundary>
+                    <ProductList />
+                </ErrorBoundary>
                 {
                     //show new product form
                     this.state.newForm ?
