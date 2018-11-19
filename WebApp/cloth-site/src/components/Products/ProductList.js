@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ProductList.css';
 import { Button, Table } from 'react-bootstrap';
+import BootstrapTable from 'react-bootstrap-table-next';
 
 class ProductList extends Component {
   constructor(props) {
@@ -30,8 +31,13 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/home/products')
-      .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
+    try {
+      fetch('/home/products')
+        .then(res => res.json())
+        .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
+    } catch (error) {
+        console.log('Error loading information')
+    }
   }
 
   componentDidUpdate() {

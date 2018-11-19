@@ -19,7 +19,7 @@ const client = redis.createClient();
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-let dev_db_url = 'mongodb://admin:manager123@ds235243.mlab.com:35243/clothcollection'; 
+let dev_db_url = 'mongodb://admin:manager123@ds235243.mlab.com:35243/clothcollection';
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
@@ -48,8 +48,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 client.on('connect', () => {
     console.log(`connected to redis`);
 });
-client.on('error', err => {
-    console.log(`Error: ${err}`);
-});
+client.on('error', function (err) {
+    console.log('error')
+}) 
 
 module.exports = app;

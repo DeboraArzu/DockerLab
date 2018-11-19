@@ -56,9 +56,7 @@ class Products extends Component {
     render() {
         return (
             <div id="ProductMain">
-                <ErrorBoundary>
-                    <ProductList />
-                </ErrorBoundary>
+                <ProductList />
                 {
                     //show new product form
                     this.state.newForm ?

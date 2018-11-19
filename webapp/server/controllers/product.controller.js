@@ -5,18 +5,18 @@ const redis = require('redis');
 const client = redis.createClient();
 
 //Simple version, without validation or sanitation
-exports.getproducts = function (req, res) {
+exports.getproducts = function (req, res, next) {
     Product.find({}, { name: "", size: "", color: "", cost: "", status: "", codigobarra: "" }, function (err, products) {
         var productMap = {};
         products.forEach(function (product) {
             productMap[product.codigo] = products;
         });
         res.status(200).send(productMap);
-    });
+    }).catch(next);
 };
 
 //HTTP POST
-exports.product_create = function (req, res) {
+exports.product_create = function (req, res, next) {
     let product = new Product(
         {
             name: req.body.name,
@@ -34,7 +34,7 @@ exports.product_create = function (req, res) {
         }
         res.status(200).send('Product Created successfully')
         insert(req.body.codigobarra, product)
-    })
+    }).catch(next);
 
 };
 
@@ -49,20 +49,20 @@ exports.product_details = function (req, res) {
 };
 
 //HTTP PUT
-exports.product_update = function (req, res) {
+exports.product_update = function (req, res, next) {
    Product.findOneAndUpdate(req.params.codigobarra, { $set: req.body }, function (err, product) {
         if (err) return next(err);
         res.status(200).send('Product udpated.');
-    }); 
+    }).catch(next);
 };
 
 //DELETE
-exports.product_delete = function (req, res) {
+exports.product_delete = function (req, res, next) {
     Product.findOneAndRemove(req.params.codigobarra, function (err) {
         if (err) return next(err);
         res.status(200).send('Deleted successfully!');
         deletedata(req.params.codigobarra)
-    })
+    }).catch(next);
 };
 
 function insert(codigo, product) {
