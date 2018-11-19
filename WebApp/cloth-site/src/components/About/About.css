@@ -1,14 +1,24 @@
 .content{
     flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-height: 30vh;
 }
 
 h1,
 h2{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
-    color: rgb(102, 88, 6);
+    color: rgb(3, 20, 95);
     height: 100%;
     list-style: none;
     display: flex;
     justify-content: center;
+}
+.Well{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
 }
