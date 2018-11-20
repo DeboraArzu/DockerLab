@@ -20,7 +20,7 @@ class Products extends Component {
         this.setState({
             newForm: false
         })
-        window.location.reload();
+       // window.location.reload();
     }
     Create = () => {
         let name = this.refs.Name.value
@@ -36,6 +36,7 @@ class Products extends Component {
             cost: cost,
             codigobarra: codigobarra
         };
+        console.log(info)
         this.refs.NewProductForm.reset()
         this.Hide();
         this.PostData(info);
@@ -46,9 +47,12 @@ class Products extends Component {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true',
                 "Content-Type": "application/json"
             }
         })
+            .then(res => res.json())
             .then(products => this.setState({ products }, () => console.log('products posted...', products)))
     }
 

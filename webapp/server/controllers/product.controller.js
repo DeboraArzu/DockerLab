@@ -63,7 +63,7 @@ exports.product_delete = function (req, res, next) {
         if (err) return next(err);
         res.status(200).send('Deleted successfully!');
        // deletedata(req.params.codigobarra)
-    }).catch(next);
+    });
 };
 
 function insert(codigo, product) {

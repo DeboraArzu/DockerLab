@@ -81,6 +81,8 @@ class ProductList extends Component {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
         "Content-Type": "application/json"
       }
     })
@@ -91,9 +93,12 @@ class ProductList extends Component {
   }
 
   DeleteMethod(codigobarra) {
+    debugger
     fetch('/home/:' + codigobarra + '/delete', {
       method: "DELETE",
       headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
         "Content-Type": "application/json"
       }
     })
@@ -189,6 +194,7 @@ class ProductList extends Component {
         </div >
       )
     } else {
+      return (<div><h3>No products in the DB...</h3></div>)
     }
     return ""
   }
