@@ -31,11 +31,19 @@ class ProductList extends Component {
 
   componentDidMount() {
     try {
-      fetch('/home/products')
+      fetch('/home/products', {
+        method: "GET",
+        mode: "same-origin",
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Content-Type': "application/json"
+        }
+      })
         .then(res => res.json())
         .then(products => this.setState({ products }, () => console.log('products fetched...', products)));
     } catch (error) {
-        console.log('Error loading information')
+      console.log('Error loading information')
     }
   }
 
