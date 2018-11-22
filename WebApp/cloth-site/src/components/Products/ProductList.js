@@ -8,6 +8,7 @@ class ProductList extends Component {
     this.state = {
       newForm: false,
       products: {},
+      saved: {},
       buttonnew: true,
       codigo: 0
     };
@@ -49,35 +50,64 @@ class ProductList extends Component {
 
   componentDidUpdate() {
     let form = this.state.newForm
-    if (form === 'true') {
-
+    if (form === true) {
+      this.refs.Name.value = this.state.saved.name
+      this.refs.Size.value = this.state.saved.size
+      this.refs.Color.value = this.state.saved.color
+      this.refs.Cost.value = this.state.saved.cost
+      this.refs.Status.value = this.state.saved.status
     }
   }
 
   Reload() {
     window.location.reload();
   }
+
   Edit = (product) => {
     let name = product.name
     let cost = product.cost
     let size = product.size
     let color = product.color
+    let status = product.status
     let codigobarra = product.codigobarra
+    let id = product._id
 
     let info = {
       name: name,
       size: size,
       color: color,
       cost: cost,
-      codigobarra: codigobarra
+      status: status,
+      codigobarra: codigobarra,
+      id: id
     };
+    //save the data
+    this.setState({ saved: info })
     console.log(JSON.stringify(info))
-    this.EditMethod(info, codigobarra)
+    this.NewButtontoggler() //show the form
   }
 
-  EditMethod(data, codigobarra) {
-    this.NewButtontoggler()
-    fetch('home/:' + codigobarra + '/update', {
+  SaveData = () => {
+    let name = this.refs.Name.value
+    let size = this.refs.Size.value
+    let color = this.refs.Color.value
+    let cost = this.refs.Cost.value
+    let status = this.refs.Status.value
+
+    let info = {
+      name: name,
+      size: size,
+      color: color,
+      cost: cost,
+      status: status,
+    };
+
+    //send the data
+    this.EditMethod(info, this.state.saved.id)
+  }
+
+  EditMethod(data, id) {
+    fetch('home/' + id + '/update', {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -88,13 +118,11 @@ class ProductList extends Component {
     })
       .then(res => res.json())
       .then(products => this.setState({ products }, () => console.log('products edited...', products)));
-
-
   }
 
-  DeleteMethod(codigobarra) {
-    debugger
-    fetch('/home/:' + codigobarra + '/delete', {
+  DeleteMethod(product) {
+    let id = product._id
+    fetch('/home/' + id + '/delete', {
       method: "DELETE",
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -125,7 +153,7 @@ class ProductList extends Component {
               {
                 this.state.products['undefined'].map(product =>
                   // <div style={{ display: "flex", textAlign: "center" }}>
-                  <tbody>
+                  <tbody key={'t' + product.codigobarra}>
                     <tr id={'p' + product.codigobarra}>
                       <td>{product.name}</td>
                       <td>{product.size}</td>
@@ -133,10 +161,10 @@ class ProductList extends Component {
                       <td>{product.cost}</td>
                       <td>{product.status}</td>
                       <td>{product.codigobarra}</td>
-                      <div style={{ display: "flex" }}>
+                      <td style={{ display: "flex" }}>
                         <Button style={{ marginRight: "2rem" }} className="ButtonEdit" onClick={() => this.Edit(product)}>Edit</Button>
-                        <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product.codigobarra)}>Delete</Button>
-                      </div>
+                        <Button className="ButtonDelete" onClick={() => this.DeleteMethod(product)}>Delete</Button>
+                      </td>
                     </tr>
                   </tbody>
                 )}
@@ -149,43 +177,37 @@ class ProductList extends Component {
                 <form ref="NewProductForm" method="POST" action="/home/create">
                   <div className="NewComponent">
                     <div className="form-group row">
-                      <label for="name-input" className="col-2 col-form-label">Name</label>
-                      <div class="col-10">
+                      <label htmlFor="name-input" className="col-2 col-form-label">Name</label>
+                      <div className="col-10">
                         <input className="form-control" type="text" name="Name" ref="Name" id="Name"></input>
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="size-input" className="col-2 col-form-label">Size</label>
-                      <div class="col-10">
+                      <label htmlFor="size-input" className="col-2 col-form-label">Size</label>
+                      <div className="col-10">
                         <input className="form-control" type="text" name="Size" ref="Size"></input>
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="color-input" className="col-2 col-form-label">Color</label>
-                      <div class="col-10">
+                      <label htmlFor="color-input" className="col-2 col-form-label">Color</label>
+                      <div className="col-10">
                         <input className="form-control" type="text" name="Color" ref="Color"></input>
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="cost-input" className="col-2 col-form-label">Cost</label>
-                      <div class="col-10">
+                      <label htmlFor="cost-input" className="col-2 col-form-label">Cost</label>
+                      <div className="col-10">
                         <input className="form-control" type="Number" name="Size" ref="Cost"></input>
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="status-input" className="col-2 col-form-label">Status</label>
-                      <div class="col-10">
+                      <label htmlFor="status-input" className="col-2 col-form-label">Status</label>
+                      <div className="col-10">
                         <input className="form-control" type="Number" name="Status" ref="Status"></input>
                       </div>
                     </div>
-                    <div className="form-group row">
-                      <label for="status-input" className="col-2 col-form-label">Codigo Barra</label>
-                      <div class="col-10">
-                        <input className="form-control" type="Number" name="codigobarra" ref="Codigobarra"></input>
-                      </div>
-                    </div>
                   </div>
-                  <Button className="ButtonEdit" onClick={() => this.Create()}>Save</Button>
+                  <Button className="ButtonEdit" onClick={() => this.SaveData()}>Save</Button>
                   <Button className="ButtonDelete" onClick={() => this.Hide()}>Cancel</Button>
                 </form>
                 : null
@@ -194,9 +216,8 @@ class ProductList extends Component {
         </div >
       )
     } else {
-      return (<div><h3>No products in the DB...</h3></div>)
+      return (<div style={{ marginLeft: "2.5rem" }}><h3>No products in the DB or no connection to the DB...</h3></div>)
     }
-    return ""
   }
 }
 export default ProductList;

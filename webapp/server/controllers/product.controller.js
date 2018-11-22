@@ -51,7 +51,7 @@ exports.product_details = function (req, res) {
 
 //HTTP PUT
 exports.product_update = function (req, res, next) {
-    Product.findOneAndUpdate(req.params.codigobarra, { $set: req.body }, function (err, product) {
+    Product.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err, product) {
         if (err) return next(err);
         res.status(200).send('Product udpated.');
     }).catch(next);
@@ -59,7 +59,7 @@ exports.product_update = function (req, res, next) {
 
 //DELETE
 exports.product_delete = function (req, res, next) {
-    Product.findOneAndDelete(req.params.codigobarra, function (err) {
+    Product.findByIdAndDelete(req.params.id, function (err) {
         if (err) return next(err);
         res.status(200).send('Deleted successfully!');
        // deletedata(req.params.codigobarra)

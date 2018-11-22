@@ -27,6 +27,7 @@ class Products extends Component {
         let size = this.refs.Size.value
         let color = this.refs.Color.value
         let cost = this.refs.Cost.value
+        let status = this.refs.Status.value
         let codigobarra = this.refs.Codigobarra.value
 
         let info = {
@@ -34,6 +35,7 @@ class Products extends Component {
             size: size,
             color: color,
             cost: cost,
+            status: status,
             codigobarra: codigobarra
         };
         console.log(info)
@@ -66,37 +68,37 @@ class Products extends Component {
                         <form ref="NewProductForm" method="POST" action="/home/create" style={{ marginTop: "50px" }}>
                             <div className="NewComponent">
                                 <div className="form-group row">
-                                    <label for="name-input" className="col-2 col-form-label">Name</label>
+                                    <label htmlFor="name-input" className="col-2 col-form-label">Name</label>
                                     <div class="col-10">
                                         <input className="form-control" type="text" name="Name" ref="Name"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label for="size-input" className="col-2 col-form-label">Size</label>
+                                    <label htmlFor="size-input" className="col-2 col-form-label">Size</label>
                                     <div class="col-10">
                                         <input className="form-control" type="text" name="Size" ref="Size"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label for="color-input" className="col-2 col-form-label">Color</label>
+                                    <label htmlFor="color-input" className="col-2 col-form-label">Color</label>
                                     <div class="col-10">
                                         <input className="form-control" type="text" name="Color" ref="Color"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label for="cost-input" className="col-2 col-form-label">Cost</label>
+                                    <label htmlFor="cost-input" className="col-2 col-form-label">Cost</label>
                                     <div class="col-10">
                                         <input className="form-control" type="Number" name="Size" ref="Cost"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label for="status-input" className="col-2 col-form-label">Status</label>
+                                    <label htmlFor="status-input" className="col-2 col-form-label">Status</label>
                                     <div class="col-10">
                                         <input className="form-control" type="Number" name="Status" ref="Status"></input>
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label for="status-input" className="col-2 col-form-label">Codigo Barra</label>
+                                    <label htmlFor="status-input" className="col-2 col-form-label">Codigo Barra</label>
                                     <div class="col-10">
                                         <input className="form-control" type="Number" name="codigobarra" ref="Codigobarra"></input>
                                     </div>
